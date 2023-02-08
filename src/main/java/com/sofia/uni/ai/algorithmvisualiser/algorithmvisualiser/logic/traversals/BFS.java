@@ -25,7 +25,7 @@ public class BFS extends AbstractGraph {
                 queue.offer(node);
                 visited.add(node);
                 linkedListStateQueue.add(new HashMap<>() {{
-                    put(new State(node, NodeColor.RED), queue);
+                    put(new State(node, NodeColor.RED), copyQueue(queue));
                 }});
             }
             while (!queue.isEmpty()) {
@@ -38,7 +38,7 @@ public class BFS extends AbstractGraph {
                                 queue.offer(neighbor);
                                 visited.add(neighbor);
                                 linkedListStateQueue.add(new HashMap<>() {{
-                                    put(new State(neighbor, NodeColor.RED), queue);
+                                    put(new State(neighbor, NodeColor.RED), copyQueue(queue));
                                 }});
                             }
                         }
@@ -46,7 +46,7 @@ public class BFS extends AbstractGraph {
                 }
                 int removed = queue.poll();
                 linkedListStateQueue.add(new HashMap<>() {{
-                    put(new State(removed, NodeColor.GREEN), queue);
+                    put(new State(removed, NodeColor.GREEN), copyQueue(queue));
                 }});
             }
         }
@@ -59,5 +59,12 @@ public class BFS extends AbstractGraph {
     @Override
     public Map<State, Queue<Integer>> getNextState(int index) {
         return this.linkedListStateQueue.get(index);
+    }
+
+    private Queue<Integer> copyQueue(Queue<Integer> queue) {
+        Queue<Integer> queueCopy = new LinkedList<>();
+        queueCopy.addAll(queue);
+
+        return queueCopy;
     }
 }
