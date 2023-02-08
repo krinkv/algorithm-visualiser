@@ -1,6 +1,6 @@
 package com.sofia.uni.ai.algorithmvisualiser.algorithmvisualiser.logic;
 
-import java.util.Queue;
+import java.util.Deque;
 
-public record TraversalStepResult(State state, Queue<Integer> dataStructure) {
+public record TraversalStepResult(State state, Deque<Integer> dataStructure) {
 }
