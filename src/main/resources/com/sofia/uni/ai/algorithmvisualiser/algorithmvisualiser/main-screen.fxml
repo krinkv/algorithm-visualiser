@@ -29,4 +29,5 @@
         <Line fx:id="Edge4_9" endX="132.0" endY="-148.0" fill="DODGERBLUE" layoutX="283.0" layoutY="261.0" startX="132.0" startY="-88.0" stroke="DODGERBLUE" />
     </AnchorPane>
     <Button fx:id="initGraphBtn" layoutX="37.0" layoutY="457.0" mnemonicParsing="false" onAction="#initGraphAction" text="инициализирай" />
+   <Button fx:id="nextStateBtn" layoutX="37.0" layoutY="503.0" mnemonicParsing="false" onAction="#nextStateAction" text="следващо състояние" />
 </AnchorPane>

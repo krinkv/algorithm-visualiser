@@ -3,7 +3,7 @@ package com.sofia.uni.ai.algorithmvisualiser.algorithmvisualiser.logic;
 import java.util.*;
 
 public abstract class AbstractGraph implements Traversal {
-    LinkedList<Map<Integer, LinkedList<Integer>>> graph;
+    protected LinkedList<Map<Integer, LinkedList<Integer>>> graph;
 
     public AbstractGraph(List<Integer> nodes, List<Edge> edges) {
         this.graph = new LinkedList<>();
@@ -29,5 +29,5 @@ public abstract class AbstractGraph implements Traversal {
 
     }
 
-    public abstract Map<State, Queue<Integer>> getNextState(int index);
+    public abstract TraversalStepResult getNextState(int index);
 }

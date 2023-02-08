@@ -1,19 +1,17 @@
 package com.sofia.uni.ai.algorithmvisualiser.algorithmvisualiser.logic.traversals;
 
-import com.sofia.uni.ai.algorithmvisualiser.algorithmvisualiser.logic.AbstractGraph;
-import com.sofia.uni.ai.algorithmvisualiser.algorithmvisualiser.logic.Edge;
-import com.sofia.uni.ai.algorithmvisualiser.algorithmvisualiser.logic.NodeColor;
-import com.sofia.uni.ai.algorithmvisualiser.algorithmvisualiser.logic.State;
+import com.sofia.uni.ai.algorithmvisualiser.algorithmvisualiser.logic.*;
 
 import java.util.*;
 
 public class BFS extends AbstractGraph {
-    LinkedList<Map<Integer, LinkedList<Integer>>> graph;
-    LinkedList<Map<State, Queue<Integer>>> linkedListStateQueue;
+    private final LinkedList<TraversalStepResult> linkedListStateQueue;
 
     public BFS(List<Integer> nodes, List<Edge> edges) {
         super(nodes, edges);
         this.linkedListStateQueue = new LinkedList<>();
+        this.traverse(1);
+        System.out.println("echo");
     }
 
     public void traverse(int start) {
@@ -24,9 +22,9 @@ public class BFS extends AbstractGraph {
             if (node == start) {
                 queue.offer(node);
                 visited.add(node);
-                linkedListStateQueue.add(new HashMap<>() {{
-                    put(new State(node, NodeColor.RED), copyQueue(queue));
-                }});
+                linkedListStateQueue.add(new TraversalStepResult(
+                    new State(node, NodeColor.RED), copyQueue(queue)
+                ));
             }
             while (!queue.isEmpty()) {
                 int current = queue.peek();
@@ -37,27 +35,27 @@ public class BFS extends AbstractGraph {
                             if (!visited.contains(neighbor)) {
                                 queue.offer(neighbor);
                                 visited.add(neighbor);
-                                linkedListStateQueue.add(new HashMap<>() {{
-                                    put(new State(neighbor, NodeColor.RED), copyQueue(queue));
-                                }});
+                                linkedListStateQueue.add(new TraversalStepResult(
+                                    new State(neighbor, NodeColor.RED), copyQueue(queue)
+                                ));
                             }
                         }
                     }
                 }
                 int removed = queue.poll();
-                linkedListStateQueue.add(new HashMap<>() {{
-                    put(new State(removed, NodeColor.GREEN), copyQueue(queue));
-                }});
+                linkedListStateQueue.add(new TraversalStepResult(
+                    new State(removed, NodeColor.GREEN), copyQueue(queue))
+            );
             }
         }
     }
 
-    public LinkedList<Map<State, Queue<Integer>>> getLinkedListStateQueue() {
+    public LinkedList<TraversalStepResult> getLinkedListStateQueue() {
         return linkedListStateQueue;
     }
 
     @Override
-    public Map<State, Queue<Integer>> getNextState(int index) {
+    public TraversalStepResult getNextState(int index) {
         return this.linkedListStateQueue.get(index);
     }
 

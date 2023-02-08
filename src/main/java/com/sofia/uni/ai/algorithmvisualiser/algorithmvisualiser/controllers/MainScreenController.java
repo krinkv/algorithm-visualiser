@@ -1,28 +1,37 @@
 package com.sofia.uni.ai.algorithmvisualiser.algorithmvisualiser.controllers;
 
 import com.sofia.uni.ai.algorithmvisualiser.algorithmvisualiser.logic.Edge;
+import com.sofia.uni.ai.algorithmvisualiser.algorithmvisualiser.logic.State;
 import com.sofia.uni.ai.algorithmvisualiser.algorithmvisualiser.logic.Traversal;
+import com.sofia.uni.ai.algorithmvisualiser.algorithmvisualiser.logic.TraversalStepResult;
 import com.sofia.uni.ai.algorithmvisualiser.algorithmvisualiser.logic.factory.Algorithm;
 import com.sofia.uni.ai.algorithmvisualiser.algorithmvisualiser.logic.factory.GraphTraversalFactory;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
-import javafx.util.Pair;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Shape;
 
 import java.util.Arrays;
 import java.util.List;
+
 import java.util.stream.Collectors;
 
 public class MainScreenController {
     private static final String NODE_PREFIX = "Node";
     private static final String EDGE_PREFIX = "Edge";
 
+    private int step = 0;
+
     @FXML
     public AnchorPane graphPane;
 
     @FXML
     public Button initGraphBtn;
+
+    @FXML
+    public Button nextStateBtn;
 
     private Traversal traversal;
 
@@ -43,6 +52,20 @@ public class MainScreenController {
                         .collect(Collectors.toList()),
                 Algorithm.BFS   // Hard coded for now
         );
+    }
+
+    @FXML
+    public void nextStateAction() {
+        TraversalStepResult currentState = traversal.getNextState(step);
+
+        Shape node = (Shape) graphPane.getChildren()
+                .filtered(n -> NODE_PREFIX.concat(String.valueOf(currentState.state().getValue())).equals(n.getId()))
+                .stream()
+                .findFirst()
+                .orElseThrow(() -> new IllegalStateException("Failed to obtain new state"));
+
+        node.setFill(Color.valueOf(currentState.state().getNodeColor().name()));
+        step++;
     }
 
     private Integer getNodeNum(String nodeId) {
