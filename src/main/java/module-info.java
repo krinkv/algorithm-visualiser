@@ -12,4 +12,5 @@ module com.sofia.uni.ai.algorithmvisualiser.algorithmvisualiser {
 
     opens com.sofia.uni.ai.algorithmvisualiser.algorithmvisualiser to javafx.fxml;
     exports com.sofia.uni.ai.algorithmvisualiser.algorithmvisualiser;
+    exports com.sofia.uni.ai.algorithmvisualiser.algorithmvisualiser.controllers;
 }
