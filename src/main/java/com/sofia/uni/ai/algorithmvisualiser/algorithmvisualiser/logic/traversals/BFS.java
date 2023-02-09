@@ -29,7 +29,7 @@ public class BFS extends AbstractGraph {
                 int current = queue.peek();
                 for (Node n : graph) {
                     if (n.value() == current) {
-                        LinkedList<Integer> neighbors = n.neighbourNodes();
+                        List<Integer> neighbors = n.neighbourNodes().stream().map(Edge::dest).toList();
                         for (int neighbor : neighbors) {
                             if (!visited.contains(neighbor)) {
                                 queue.offer(neighbor);

@@ -12,11 +12,9 @@ public abstract class AbstractGraph implements Traversal {
         }
 
         for (Edge edge : edges) {
-            int node1 = edge.source();
-            int node2 = edge.dest();
             for (Node currentNode : this.graph) {
-                if (currentNode.value() == node1) {
-                    currentNode.neighbourNodes().add(node2);
+                if (currentNode.value() == edge.source()) {
+                    currentNode.neighbourNodes().add(edge);
                     break;
                 }
             }
