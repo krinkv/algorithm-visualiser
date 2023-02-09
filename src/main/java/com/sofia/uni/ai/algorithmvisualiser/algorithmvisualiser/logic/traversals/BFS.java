@@ -11,7 +11,6 @@ public class BFS extends AbstractGraph {
         super(nodes, edges);
         this.linkedListStateQueue = new LinkedList<>();
         this.traverse(1);
-        System.out.println("echo");
     }
 
     public void traverse(int start) {
