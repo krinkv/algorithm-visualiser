@@ -9,6 +9,7 @@ import com.sofia.uni.ai.algorithmvisualiser.algorithmvisualiser.logic.factory.Gr
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.RadioButton;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
@@ -40,7 +41,13 @@ public class MainScreenController {
     public Button nextStateBtn;
 
     @FXML
-    public Button changeGraphBtn;
+    public RadioButton bfsRbtn;
+
+    @FXML
+    public RadioButton dfsRbtn;
+
+    @FXML
+    public RadioButton ucsRbtn;
 
     @FXML
     public AnchorPane dataStructurePane;
@@ -69,9 +76,15 @@ public class MainScreenController {
     }
 
     @FXML
-    public void changeGraphAction() {
+    public void selectAlgorithm() {
         graphPane.getChildren().clear();
-        graphPane.getChildren().addAll(GraphDrawer.drawUninformedSearchGraph());
+
+        if (bfsRbtn.isSelected() || dfsRbtn.isSelected()) {
+            graphPane.getChildren().addAll(GraphDrawer.drawUninformedSearchGraph());
+        } else if (ucsRbtn.isSelected()) {
+            // TODO: draw weight graph
+        }
+        // TODO: more checks for heuristic algorithms
     }
 
     @FXML
