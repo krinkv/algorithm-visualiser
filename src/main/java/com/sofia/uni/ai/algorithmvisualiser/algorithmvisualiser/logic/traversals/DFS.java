@@ -27,7 +27,7 @@ public class DFS extends AbstractGraph {
         ));
         for (Node currentNode : graph) {
             if (currentNode.value() == start) {
-                LinkedList<Integer> neighbors = currentNode.neighbourNodes();
+                List<Integer> neighbors = currentNode.neighbourNodes().stream().map(Edge::dest).toList();
                 for (int neighbor : neighbors) {
                     if (!visited.contains(neighbor)) {
                         traverseRec(neighbor,stack,visited);
