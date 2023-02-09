@@ -1,5 +1,6 @@
 package com.sofia.uni.ai.algorithmvisualiser.algorithmvisualiser.controllers;
 
+import com.sofia.uni.ai.algorithmvisualiser.algorithmvisualiser.drawing.GraphDrawer;
 import com.sofia.uni.ai.algorithmvisualiser.algorithmvisualiser.logic.Edge;
 import com.sofia.uni.ai.algorithmvisualiser.algorithmvisualiser.logic.Traversal;
 import com.sofia.uni.ai.algorithmvisualiser.algorithmvisualiser.logic.TraversalStepResult;
@@ -8,6 +9,7 @@ import com.sofia.uni.ai.algorithmvisualiser.algorithmvisualiser.logic.factory.Gr
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.RadioButton;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
@@ -39,6 +41,15 @@ public class MainScreenController {
     public Button nextStateBtn;
 
     @FXML
+    public RadioButton bfsRbtn;
+
+    @FXML
+    public RadioButton dfsRbtn;
+
+    @FXML
+    public RadioButton ucsRbtn;
+
+    @FXML
     public AnchorPane dataStructurePane;
 
     private Traversal traversal;
@@ -65,6 +76,18 @@ public class MainScreenController {
     }
 
     @FXML
+    public void selectAlgorithm() {
+        graphPane.getChildren().clear();
+
+        if (bfsRbtn.isSelected() || dfsRbtn.isSelected()) {
+            graphPane.getChildren().addAll(GraphDrawer.drawUninformedSearchGraph());
+        } else if (ucsRbtn.isSelected()) {
+            // TODO: draw weight graph
+        }
+        // TODO: more checks for heuristic algorithms
+    }
+
+    @FXML
     public void nextStateAction() {
         TraversalStepResult currentState = traversal.getNextState(step);
 
@@ -81,7 +104,6 @@ public class MainScreenController {
 
     private void updateDataStructure(Queue<Integer> dataStructure) {
         dataStructurePane.getChildren().clear();
-        int layoutX = 100;
         int currentY = 560;
         int diff = 60;
 
