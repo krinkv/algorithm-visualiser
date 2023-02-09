@@ -1,7 +1,6 @@
 package com.sofia.uni.ai.algorithmvisualiser.algorithmvisualiser.controllers;
 
 import com.sofia.uni.ai.algorithmvisualiser.algorithmvisualiser.logic.Edge;
-import com.sofia.uni.ai.algorithmvisualiser.algorithmvisualiser.logic.State;
 import com.sofia.uni.ai.algorithmvisualiser.algorithmvisualiser.logic.Traversal;
 import com.sofia.uni.ai.algorithmvisualiser.algorithmvisualiser.logic.TraversalStepResult;
 import com.sofia.uni.ai.algorithmvisualiser.algorithmvisualiser.logic.factory.Algorithm;
@@ -14,11 +13,11 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Shape;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextBoundsType;
 
 import java.util.Arrays;
-import java.util.Deque;
 import java.util.List;
 
 import java.util.Queue;
@@ -91,6 +90,7 @@ public class MainScreenController {
             Circle circle = createDataStructureUiElement();
             Text text = new Text(NodeLabel.getNodeLabel(element).get().toString());
             text.setBoundsType(TextBoundsType.VISUAL);
+            text.setFont(new Font(28));
             StackPane dataStructEl = createStackPane(circle, text, currentY);
             currentY -= diff;
             dataStructurePane.getChildren().add(dataStructEl);
@@ -98,7 +98,7 @@ public class MainScreenController {
     }
 
     private StackPane createStackPane(Circle circle, Text text, int layoutY) {
-        int layoutX = 100;
+        int layoutX = 15;
         StackPane stack = new StackPane();
         stack.getChildren().addAll(circle, text);
         stack.setLayoutX(layoutX);
@@ -108,10 +108,9 @@ public class MainScreenController {
     }
 
     private Circle createDataStructureUiElement() {
-        int layoutX = 100;
         Circle circle = new Circle();
         circle.setRadius(24);
-        circle.setFill(Color.WHITE);
+        circle.setFill(Color.DODGERBLUE);
 
         return circle;
     }

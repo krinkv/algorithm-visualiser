@@ -81,5 +81,5 @@
     </AnchorPane>
     <Button fx:id="initGraphBtn" layoutX="37.0" layoutY="457.0" mnemonicParsing="false" onAction="#initGraphAction" text="инициализирай" />
    <Button fx:id="nextStateBtn" layoutX="37.0" layoutY="503.0" mnemonicParsing="false" onAction="#nextStateAction" text="следващо състояние" />
-   <AnchorPane fx:id="dataStructurePane" layoutX="546.0" layoutY="32.0" prefHeight="631.0" prefWidth="200.0" />
+   <AnchorPane fx:id="dataStructurePane" layoutX="648.0" layoutY="26.0" prefHeight="631.0" prefWidth="86.0" style="-fx-border-color: black; -fx-border-width: 0px 2px 2px 2px" />
 </AnchorPane>
