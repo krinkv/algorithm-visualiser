@@ -39,4 +39,12 @@ public class State {
     public int hashCode() {
         return Objects.hash(value, nodeColor);
     }
+
+    @Override
+    public String toString() {
+        return "State{" +
+                "value=" + value +
+                ", nodeColor=" + nodeColor +
+                '}';
+    }
 }

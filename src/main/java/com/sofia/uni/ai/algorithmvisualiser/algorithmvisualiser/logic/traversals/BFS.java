@@ -5,11 +5,11 @@ import com.sofia.uni.ai.algorithmvisualiser.algorithmvisualiser.logic.*;
 import java.util.*;
 
 public class BFS extends AbstractGraph {
-    private final LinkedList<TraversalStepResult> linkedListStateQueue;
+    private final LinkedList<TraversalStepResult> traversalStepResults;
 
     public BFS(List<Integer> nodes, List<Edge> edges) {
         super(nodes, edges);
-        this.linkedListStateQueue = new LinkedList<>();
+        this.traversalStepResults = new LinkedList<>();
         this.traverse(1);
     }
 
@@ -21,8 +21,8 @@ public class BFS extends AbstractGraph {
             if (node == start) {
                 queue.offer(node);
                 visited.add(node);
-                linkedListStateQueue.add(new TraversalStepResult(
-                    new State(node, NodeColor.RED), copyQueue(queue)
+                traversalStepResults.add(new TraversalStepResult(
+                        new State(node, NodeColor.RED), copyQueue(queue)
                 ));
             }
             while (!queue.isEmpty()) {
@@ -34,32 +34,32 @@ public class BFS extends AbstractGraph {
                             if (!visited.contains(neighbor)) {
                                 queue.offer(neighbor);
                                 visited.add(neighbor);
-                                linkedListStateQueue.add(new TraversalStepResult(
-                                    new State(neighbor, NodeColor.RED), copyQueue(queue)
+                                traversalStepResults.add(new TraversalStepResult(
+                                        new State(neighbor, NodeColor.RED), copyQueue(queue)
                                 ));
                             }
                         }
                     }
                 }
                 int removed = queue.poll();
-                linkedListStateQueue.add(new TraversalStepResult(
-                    new State(removed, NodeColor.GREEN), copyQueue(queue))
-            );
+                traversalStepResults.add(new TraversalStepResult(
+                        new State(removed, NodeColor.GREEN), copyQueue(queue))
+                );
             }
         }
     }
 
-    public LinkedList<TraversalStepResult> getLinkedListStateQueue() {
-        return linkedListStateQueue;
+    public LinkedList<TraversalStepResult> getTraversalStepResults() {
+        return traversalStepResults;
     }
 
     @Override
     public TraversalStepResult getNextState(int index) {
-        return this.linkedListStateQueue.get(index);
+        return this.traversalStepResults.get(index);
     }
 
-    private Queue<Integer> copyQueue(Queue<Integer> queue) {
-        Queue<Integer> queueCopy = new LinkedList<>();
+    private Deque<Integer> copyQueue(Queue<Integer> queue) {
+        Deque<Integer> queueCopy = new LinkedList<>();
         queueCopy.addAll(queue);
 
         return queueCopy;
