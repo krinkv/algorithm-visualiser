@@ -1,5 +1,6 @@
 package com.sofia.uni.ai.algorithmvisualiser.algorithmvisualiser.controllers;
 
+import com.sofia.uni.ai.algorithmvisualiser.algorithmvisualiser.drawing.GraphDrawer;
 import com.sofia.uni.ai.algorithmvisualiser.algorithmvisualiser.logic.Edge;
 import com.sofia.uni.ai.algorithmvisualiser.algorithmvisualiser.logic.Traversal;
 import com.sofia.uni.ai.algorithmvisualiser.algorithmvisualiser.logic.TraversalStepResult;
@@ -39,6 +40,9 @@ public class MainScreenController {
     public Button nextStateBtn;
 
     @FXML
+    public Button changeGraphBtn;
+
+    @FXML
     public AnchorPane dataStructurePane;
 
     private Traversal traversal;
@@ -65,6 +69,12 @@ public class MainScreenController {
     }
 
     @FXML
+    public void changeGraphAction() {
+        graphPane.getChildren().clear();
+        graphPane.getChildren().addAll(GraphDrawer.drawUninformedSearchGraph());
+    }
+
+    @FXML
     public void nextStateAction() {
         TraversalStepResult currentState = traversal.getNextState(step);
 
@@ -81,7 +91,6 @@ public class MainScreenController {
 
     private void updateDataStructure(Queue<Integer> dataStructure) {
         dataStructurePane.getChildren().clear();
-        int layoutX = 100;
         int currentY = 560;
         int diff = 60;
 
