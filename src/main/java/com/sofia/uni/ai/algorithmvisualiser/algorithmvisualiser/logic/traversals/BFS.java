@@ -16,8 +16,8 @@ public class BFS extends AbstractGraph {
     public void traverse(int start) {
         Queue<Integer> queue = new LinkedList<>();
         Set<Integer> visited = new HashSet<>();
-        for (Map<Integer, LinkedList<Integer>> map : graph) {
-            int node = map.keySet().iterator().next();
+        for (Node currentNode : graph) {
+            int node = currentNode.value();
             if (node == start) {
                 queue.offer(node);
                 visited.add(node);
@@ -27,9 +27,9 @@ public class BFS extends AbstractGraph {
             }
             while (!queue.isEmpty()) {
                 int current = queue.peek();
-                for (Map<Integer, LinkedList<Integer>> m : graph) {
-                    if (m.containsKey(current)) {
-                        LinkedList<Integer> neighbors = m.get(current);
+                for (Node n : graph) {
+                    if (n.value() == current) {
+                        LinkedList<Integer> neighbors = n.neighbourNodes();
                         for (int neighbor : neighbors) {
                             if (!visited.contains(neighbor)) {
                                 queue.offer(neighbor);

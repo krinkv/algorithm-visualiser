@@ -11,7 +11,6 @@ public class DFS extends AbstractGraph {
         super(nodes, edges);
         this.traversalStepResults = new LinkedList<>();
         this.traverse(1);
-        System.out.println("echo");
     }
 
     public void traverse(int start) {
@@ -26,9 +25,9 @@ public class DFS extends AbstractGraph {
         this.traversalStepResults.add(new TraversalStepResult(
                 new State(start, NodeColor.RED), new ArrayDeque<>(stack)
         ));
-        for (Map<Integer, LinkedList<Integer>> m : graph) {
-            if (m.containsKey(start)) {
-                LinkedList<Integer> neighbors = m.get(start);
+        for (Node currentNode : graph) {
+            if (currentNode.value() == start) {
+                LinkedList<Integer> neighbors = currentNode.neighbourNodes();
                 for (int neighbor : neighbors) {
                     if (!visited.contains(neighbor)) {
                         traverseRec(neighbor,stack,visited);
@@ -47,7 +46,7 @@ public class DFS extends AbstractGraph {
     }
 
     public TraversalStepResult getNextState(int index) {
-        return null;
+        return this.traversalStepResults.get(index);
     }
 
 }

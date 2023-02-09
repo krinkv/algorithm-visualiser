@@ -11,9 +11,10 @@ public class GraphTraversalFactory {
     public static Traversal constructGraph(List<Integer> nodes, List<Edge> edges, Algorithm algorithm) {
         if (algorithm == Algorithm.BFS) {
             return new BFS(nodes, edges);
-        }
-        if (algorithm == Algorithm.DFS) {
+        } else if (algorithm == Algorithm.DFS) {
             return new DFS(nodes, edges);
+        } else if (algorithm == Algorithm.UCS) {
+
         }
 
         return null;

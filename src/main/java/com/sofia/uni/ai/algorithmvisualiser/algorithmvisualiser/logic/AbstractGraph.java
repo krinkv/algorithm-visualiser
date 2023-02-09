@@ -3,22 +3,20 @@ package com.sofia.uni.ai.algorithmvisualiser.algorithmvisualiser.logic;
 import java.util.*;
 
 public abstract class AbstractGraph implements Traversal {
-    protected LinkedList<Map<Integer, LinkedList<Integer>>> graph;
+    protected LinkedList<Node> graph;
 
     public AbstractGraph(List<Integer> nodes, List<Edge> edges) {
         this.graph = new LinkedList<>();
         for (int node : nodes) {
-            Map<Integer, LinkedList<Integer>> map = new HashMap<>();
-            map.put(node, new LinkedList<>());
-            this.graph.add(map);
+            this.graph.add(new Node(node, new LinkedList<>()));
         }
 
         for (Edge edge : edges) {
             int node1 = edge.source();
             int node2 = edge.dest();
-            for (Map<Integer, LinkedList<Integer>> map : this.graph) {
-                if (map.containsKey(node1)) {
-                    map.get(node1).add(node2);
+            for (Node currentNode : this.graph) {
+                if (currentNode.value() == node1) {
+                    currentNode.neighbourNodes().add(node2);
                     break;
                 }
             }

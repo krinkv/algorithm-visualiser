@@ -1,4 +1,4 @@
 package com.sofia.uni.ai.algorithmvisualiser.algorithmvisualiser.logic;
 
-public record Edge(Integer source, Integer dest) {
+public record Edge(int source, int dest, int weight) {
 }
