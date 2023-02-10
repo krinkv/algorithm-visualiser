@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane fx:id="mainPane" minHeight="0.0" minWidth="0.0" prefHeight="682.0" prefWidth="980.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sofia.uni.ai.algorithmvisualiser.algorithmvisualiser.controllers.MainScreenController">
-    <AnchorPane fx:id="graphPane" layoutX="250.0" layoutY="26.0" prefHeight="367.0" prefWidth="480.0" />
+   <AnchorPane fx:id="graphPane" layoutX="250.0" layoutY="26.0" prefHeight="367.0" prefWidth="480.0"/>
    <AnchorPane fx:id="dataStructurePane" layoutX="789.0" layoutY="26.0" prefHeight="631.0" prefWidth="86.0" style="-fx-border-color: black; -fx-border-width: 0px 2px 2px 2px" />
    <AnchorPane layoutX="33.0" layoutY="26.0" prefHeight="631.0" prefWidth="190.0">
       <children>
@@ -16,8 +16,9 @@
             </toggleGroup>
          </RadioButton>
          <RadioButton fx:id="dfsRbtn" layoutX="29.0" layoutY="77.0" mnemonicParsing="false" onAction="#selectAlgorithm" text="DFS" toggleGroup="$algorithmselect" />
-         <RadioButton fx:id="ucsRbtn" layoutX="29.0" layoutY="127.0" mnemonicParsing="false" text="UCS" toggleGroup="$algorithmselect" />
-         <RadioButton fx:id="greedyRbtn" layoutX="29.0" layoutY="177.0" mnemonicParsing="false" onAction="#selectAlgorithm" text="GREEDY" toggleGroup="$algorithmselect" />
+         <RadioButton fx:id="ucsRbtn" layoutX="29.0" layoutY="127.0" mnemonicParsing="false" onAction="#selectAlgorithm" text="UCS" toggleGroup="$algorithmselect" />
+         <RadioButton fx:id="ucsRbtn" layoutX="29.0" layoutY="177.0" mnemonicParsing="false" text="UCS" toggleGroup="$algorithmselect" />
+         <RadioButton fx:id="greedyRbtn" layoutX="29.0" layoutY="227.0" mnemonicParsing="false" onAction="#selectAlgorithm" text="GREEDY" toggleGroup="$algorithmselect" />
           <Button fx:id="initGraphBtn" layoutX="15.0" layoutY="409.0" mnemonicParsing="false" onAction="#initGraphAction" text="Инициализирай" />
          <Button fx:id="nextStateBtn" layoutX="14.0" layoutY="448.0" mnemonicParsing="false" onAction="#nextStateAction" text="Следващо състояние" />
       </children>

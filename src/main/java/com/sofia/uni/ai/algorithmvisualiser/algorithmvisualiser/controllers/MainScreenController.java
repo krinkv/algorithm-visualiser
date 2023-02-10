@@ -103,11 +103,10 @@ public class MainScreenController {
         if (bfsRbtn.isSelected() || dfsRbtn.isSelected()) {
             graphPane.getChildren().addAll(GraphDrawer.drawUninformedSearchGraph());
         } else if (ucsRbtn.isSelected()) {
-            // TODO: draw weight graph
+            graphPane.getChildren().addAll(GraphDrawer.drawUCSsearchGraph());
         } else if (greedyRbtn.isSelected()) {
             graphPane.getChildren().addAll(GraphDrawer.drawMountainSearchGraph());
         }
-        // TODO: more checks for heuristic algorithms
     }
 
     @FXML

@@ -40,6 +40,10 @@ public class UCS extends AbstractGraph {
         cost.add(Integer.MAX_VALUE);
         priorityQueue.add(ucsStartNode);
         visited.add(startNode.node().value());
+        this.traversalStepResults.add(new TraversalStepResult(
+                new State(startNode.node().value(), NodeColor.RED),
+                new ArrayDeque<Integer>(priorityQueue.stream().map(n -> n.value).toList())
+        ));
 
         while (true) {
             if (priorityQueue.isEmpty()) {
@@ -47,6 +51,10 @@ public class UCS extends AbstractGraph {
             }
 
             UCS_NODE ucscurrent = priorityQueue.poll();
+            this.traversalStepResults.add(new TraversalStepResult(
+                    new State(ucscurrent.value, NodeColor.GREEN),
+                    new ArrayDeque<Integer>(priorityQueue.stream().map(n -> n.value).toList())
+            ));
             Node current = graph.stream().filter(n -> n.node().value() == ucscurrent.value).findFirst().get();
             if (current.node().value() == goalState) {
                 break;
