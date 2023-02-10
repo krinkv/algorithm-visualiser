@@ -15,17 +15,17 @@ import java.util.stream.Stream;
 
 public class GraphDrawer {
     public static List<Node> drawUninformedSearchGraph() {
-        List<Node> nodes = GraphConfig.UNINFORMED_SEARCH_GRAPH_NODE_DETAILS
+        List<Node> nodes = GraphConfig.MOUNTAIN_GRAPH_NODE_DETAILS
                 .stream()
                 .map(GraphDrawer::createNode)
                 .toList();
 
-        List<Node> edges = GraphConfig.UNINFORMED_SEARCH_GRAPH_EDGE_DETAILS
+        List<Node> edges = GraphConfig.MOUNTAIN_GRAPH_EDGE_DETAILS
                 .stream()
                 .map(GraphDrawer::createEdge)
                 .toList();
 
-        List<Node> labels = GraphConfig.UNINFORMED_SEARCH_GRAPH_TEXT_LABELS
+        List<Node> labels = GraphConfig.MOUNTAIN_GRAPH_TEXT_LABELS_EDGES
                 .stream()
                 .map(GraphDrawer::createNodeLabel)
                 .toList();
@@ -70,7 +70,7 @@ public class GraphDrawer {
         text.setText(textLayoutDetails.text());
         text.setFont(new Font(28d));
         text.setStrokeWidth(0d);
-        text.setWrappingWidth(17.414215087890625d);
+        text.setWrappingWidth(textLayoutDetails.wrappingWidth());
 
         return text;
     }
