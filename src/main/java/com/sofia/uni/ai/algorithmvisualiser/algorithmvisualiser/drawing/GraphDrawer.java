@@ -68,9 +68,9 @@ public class GraphDrawer {
         text.setLayoutX(textLayoutDetails.x());
         text.setLayoutY(textLayoutDetails.y());
         text.setText(textLayoutDetails.text());
-        text.setFont(new Font(28d));
+        text.setFont(new Font(textLayoutDetails.fontSize()));
         text.setStrokeWidth(0d);
-        text.setWrappingWidth(17.414215087890625d);
+        text.setWrappingWidth(textLayoutDetails.wrappingWidth());
 
         return text;
     }
