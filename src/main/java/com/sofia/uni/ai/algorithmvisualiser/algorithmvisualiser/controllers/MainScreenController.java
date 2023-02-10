@@ -2,6 +2,7 @@ package com.sofia.uni.ai.algorithmvisualiser.algorithmvisualiser.controllers;
 
 import com.sofia.uni.ai.algorithmvisualiser.algorithmvisualiser.drawing.GraphDrawer;
 import com.sofia.uni.ai.algorithmvisualiser.algorithmvisualiser.logic.Edge;
+import com.sofia.uni.ai.algorithmvisualiser.algorithmvisualiser.logic.NodeDetails;
 import com.sofia.uni.ai.algorithmvisualiser.algorithmvisualiser.logic.Traversal;
 import com.sofia.uni.ai.algorithmvisualiser.algorithmvisualiser.logic.TraversalStepResult;
 import com.sofia.uni.ai.algorithmvisualiser.algorithmvisualiser.logic.factory.Algorithm;
@@ -152,8 +153,13 @@ public class MainScreenController {
         return circle;
     }
 
-    private Integer getNodeNum(String nodeId) {
-        return Integer.valueOf(nodeId.substring(NODE_PREFIX.length()));
+    private NodeDetails getNodeNum(String nodeId) {
+        List<Integer> nodeDetailsValues = Arrays
+                .stream(nodeId.substring(NODE_PREFIX.length()).split("_"))
+                .map(Integer::valueOf)
+                .toList();
+
+        return new NodeDetails(nodeDetailsValues.get(0), nodeDetailsValues.size() == 1 ? 1 : nodeDetailsValues.get(1));
     }
 
     private List<Edge> getSourceDestinationEdge(String edgeId) {

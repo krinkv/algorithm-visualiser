@@ -7,7 +7,7 @@ import java.util.*;
 public class DFS extends AbstractGraph {
     private final LinkedList<TraversalStepResult> traversalStepResults;
 
-    public DFS(List<Integer> nodes, List<Edge> edges) {
+    public DFS(List<NodeDetails> nodes, List<Edge> edges) {
         super(nodes, edges);
         this.traversalStepResults = new LinkedList<>();
         this.traverse(1);
@@ -26,7 +26,7 @@ public class DFS extends AbstractGraph {
                 new State(start, NodeColor.RED), new ArrayDeque<>(stack)
         ));
         for (Node currentNode : graph) {
-            if (currentNode.value() == start) {
+            if (currentNode.node().value() == start) {
                 List<Integer> neighbors = currentNode.neighbourNodes().stream().map(Edge::dest).toList();
                 for (int neighbor : neighbors) {
                     if (!visited.contains(neighbor)) {
