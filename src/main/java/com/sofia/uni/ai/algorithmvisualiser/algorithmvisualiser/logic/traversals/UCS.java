@@ -1,6 +1,10 @@
 package com.sofia.uni.ai.algorithmvisualiser.algorithmvisualiser.logic.traversals;
 
 import com.sofia.uni.ai.algorithmvisualiser.algorithmvisualiser.logic.*;
+import com.sofia.uni.ai.algorithmvisualiser.algorithmvisualiser.logic.AbstractGraph;
+import com.sofia.uni.ai.algorithmvisualiser.algorithmvisualiser.logic.Edge;
+import com.sofia.uni.ai.algorithmvisualiser.algorithmvisualiser.logic.Node;
+import com.sofia.uni.ai.algorithmvisualiser.algorithmvisualiser.logic.TraversalStepResult;
 
 import java.util.*;
 import java.util.stream.Collectors;
