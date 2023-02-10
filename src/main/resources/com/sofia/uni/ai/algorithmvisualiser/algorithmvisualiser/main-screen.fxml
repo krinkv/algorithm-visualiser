@@ -15,7 +15,7 @@
                <ToggleGroup fx:id="algorithmselect" />
             </toggleGroup>
          </RadioButton>
-         <RadioButton fx:id="dfsRbtn" layoutX="29.0" layoutY="77.0" mnemonicParsing="false" text="DFS" toggleGroup="$algorithmselect" />
+         <RadioButton fx:id="dfsRbtn" layoutX="29.0" layoutY="77.0" mnemonicParsing="false" onAction="#selectAlgorithm" text="DFS" toggleGroup="$algorithmselect" />
          <RadioButton fx:id="ucsRbtn" layoutX="29.0" layoutY="127.0" mnemonicParsing="false" text="UCS" toggleGroup="$algorithmselect" />
           <Button fx:id="initGraphBtn" layoutX="15.0" layoutY="409.0" mnemonicParsing="false" onAction="#initGraphAction" text="инициализирай" />
          <Button fx:id="nextStateBtn" layoutX="14.0" layoutY="448.0" mnemonicParsing="false" onAction="#nextStateAction" text="следващо състояние" />

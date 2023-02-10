@@ -71,7 +71,7 @@ public class MainScreenController {
                         .map(Node::getId)
                         .map(this::getSourceDestinationEdge)
                         .collect(Collectors.toList()),
-                Algorithm.BFS   // Hard coded for now
+                Algorithm.DFS   // Hard coded for now
         );
     }
 
@@ -142,14 +142,15 @@ public class MainScreenController {
     }
 
     private Edge getSourceDestinationEdge(String edgeId) {
-        List<Integer> sourceDest = Arrays
+        List<Integer> sourceDestWeight = Arrays
                 .stream(edgeId.substring(EDGE_PREFIX.length()).split("_"))
                 .map(Integer::valueOf)
                 .toList();
 
         return new Edge(
-                sourceDest.get(0),
-                sourceDest.get(1)
+                sourceDestWeight.get(0),
+                sourceDestWeight.get(1),
+                sourceDestWeight.size() == 2 ? 1 : sourceDestWeight.get(2)
         );
     }
 }
