@@ -7,7 +7,7 @@ import java.util.*;
 public class BFS extends AbstractGraph {
     private final LinkedList<TraversalStepResult> traversalStepResults;
 
-    public BFS(List<Integer> nodes, List<Edge> edges) {
+    public BFS(List<NodeDetails> nodes, List<Edge> edges) {
         super(nodes, edges);
         this.traversalStepResults = new LinkedList<>();
         this.traverse(1);
@@ -17,7 +17,7 @@ public class BFS extends AbstractGraph {
         Queue<Integer> queue = new LinkedList<>();
         Set<Integer> visited = new HashSet<>();
         for (Node currentNode : graph) {
-            int node = currentNode.value();
+            int node = currentNode.node().value();
             if (node == start) {
                 queue.offer(node);
                 visited.add(node);
@@ -28,7 +28,7 @@ public class BFS extends AbstractGraph {
             while (!queue.isEmpty()) {
                 int current = queue.peek();
                 for (Node n : graph) {
-                    if (n.value() == current) {
+                    if (n.node().value() == current) {
                         List<Integer> neighbors = n.neighbourNodes().stream().map(Edge::dest).toList();
                         for (int neighbor : neighbors) {
                             if (!visited.contains(neighbor)) {

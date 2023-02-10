@@ -1,6 +1,7 @@
 package com.sofia.uni.ai.algorithmvisualiser.algorithmvisualiser.logic.factory;
 
 import com.sofia.uni.ai.algorithmvisualiser.algorithmvisualiser.logic.Edge;
+import com.sofia.uni.ai.algorithmvisualiser.algorithmvisualiser.logic.NodeDetails;
 import com.sofia.uni.ai.algorithmvisualiser.algorithmvisualiser.logic.Traversal;
 import com.sofia.uni.ai.algorithmvisualiser.algorithmvisualiser.logic.traversals.BFS;
 import com.sofia.uni.ai.algorithmvisualiser.algorithmvisualiser.logic.traversals.DFS;
@@ -8,7 +9,7 @@ import com.sofia.uni.ai.algorithmvisualiser.algorithmvisualiser.logic.traversals
 import java.util.List;
 
 public class GraphTraversalFactory {
-    public static Traversal constructGraph(List<Integer> nodes, List<Edge> edges, Algorithm algorithm) {
+    public static Traversal constructGraph(List<NodeDetails> nodes, List<Edge> edges, Algorithm algorithm) {
         if (algorithm == Algorithm.BFS) {
             return new BFS(nodes, edges);
         } else if (algorithm == Algorithm.DFS) {

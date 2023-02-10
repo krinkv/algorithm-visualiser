@@ -17,7 +17,7 @@ public class UCS extends AbstractGraph {
     private final List<Integer> parent;
     private final int goalState;
 
-    public UCS(List<Integer> nodes, List<Edge> edges, int goalState) {
+    public UCS(List<NodeDetails> nodes, List<Edge> edges, int goalState) {
         super(nodes, edges);
         this.traversalStepResults = new LinkedList<>();
         this.goalState = goalState;
@@ -27,19 +27,19 @@ public class UCS extends AbstractGraph {
         this.traverse(1);
     }
 
-    private List<Integer> initCost(List<Integer> nodes) {
+    private List<Integer> initCost(List<NodeDetails> nodes) {
         return nodes.stream().map(s -> Integer.MAX_VALUE).collect(Collectors.toList());
     }
 
     private void traverse(int start) {
-        Node startNode = graph.stream().filter(n -> n.value() == start).findFirst().get();
+        Node startNode = graph.stream().filter(n -> n.node().value() == start).findFirst().get();
         UCS_NODE ucsStartNode = new UCS_NODE();
         ucsStartNode.cost = 0;
-        ucsStartNode.value = startNode.value();
+        ucsStartNode.value = startNode.node().value();
         cost.set(1, 0);
         cost.add(Integer.MAX_VALUE);
         priorityQueue.add(ucsStartNode);
-        visited.add(startNode.value());
+        visited.add(startNode.node().value());
 
         while (true) {
             if (priorityQueue.isEmpty()) {
@@ -47,15 +47,15 @@ public class UCS extends AbstractGraph {
             }
 
             UCS_NODE ucscurrent = priorityQueue.poll();
-            Node current = graph.stream().filter(n -> n.value() == ucscurrent.value).findFirst().get();
-            if (current.value() == goalState) {
+            Node current = graph.stream().filter(n -> n.node().value() == ucscurrent.value).findFirst().get();
+            if (current.node().value() == goalState) {
                 break;
             }
 
             for (Edge currentNodeEdges : current.neighbourNodes()) {
                 int child = currentNodeEdges.dest();
-                if (cost.get(child) > cost.get(current.value()) + currentNodeEdges.weight()) {
-                    cost.set(child, cost.get(current.value()) + currentNodeEdges.weight());
+                if (cost.get(child) > cost.get(current.node().value()) + currentNodeEdges.weight()) {
+                    cost.set(child, cost.get(current.node().value()) + currentNodeEdges.weight());
 
                     UCS_NODE ucsNode = new UCS_NODE();
                     ucsNode.cost = cost.get(child);
@@ -65,12 +65,12 @@ public class UCS extends AbstractGraph {
                             new State(ucsNode.getValue(), NodeColor.RED),
                             new ArrayDeque<Integer>(priorityQueue.stream().map(n -> n.value).toList())
                     ));
-                    parent.set(child, current.value());
+                    parent.set(child, current.node().value());
 
                 }
             }
             this.traversalStepResults.add(new TraversalStepResult(
-                    new State(current.value(), NodeColor.GREEN),
+                    new State(current.node().value(), NodeColor.GREEN),
                     new ArrayDeque<Integer>(priorityQueue.stream().map(n -> n.value).toList())
             ));
         }
