@@ -112,13 +112,25 @@ public class MainScreenController {
 
     @FXML
     public void nextStateAction() {
+        System.out.println("kure kapan");
         TraversalStepResult currentState = traversal.getNextState(step);
 
-        Shape node = (Shape) graphPane.getChildren()
-                .filtered(n -> NODE_PREFIX.concat(String.valueOf(currentState.state().getValue())).equals(n.getId()))
-                .stream()
-                .findFirst()
-                .orElseThrow(() -> new IllegalStateException("Failed to obtain new state"));
+        Shape node = null;
+        if (greedyRbtn.isSelected()) {
+            node = (Shape) graphPane.getChildren()
+                    .filtered(n -> NODE_PREFIX.concat(String.valueOf(currentState.state().getValue())).concat("_")
+                            .concat(String.valueOf(currentState.state().getHeuristic()))
+                            .equals(n.getId()))
+                    .stream()
+                    .findFirst()
+                    .orElseThrow(() -> new IllegalStateException("Failed to obtain new state"));
+        } else {
+            node = (Shape) graphPane.getChildren()
+                    .filtered(n -> NODE_PREFIX.concat(String.valueOf(currentState.state().getValue())).equals(n.getId()))
+                    .stream()
+                    .findFirst()
+                    .orElseThrow(() -> new IllegalStateException("Failed to obtain new state"));
+        }
 
         node.setFill(Color.valueOf(currentState.state().getNodeColor().name()));
         updateDataStructure(currentState.dataStructure());

@@ -22,7 +22,7 @@ public class BFS extends AbstractGraph {
                 queue.offer(node);
                 visited.add(node);
                 traversalStepResults.add(new TraversalStepResult(
-                        new State(node, NodeColor.RED), copyQueue(queue)
+                        new State(node, 1, NodeColor.RED), copyQueue(queue)
                 ));
             }
             while (!queue.isEmpty()) {
@@ -35,7 +35,7 @@ public class BFS extends AbstractGraph {
                                 queue.offer(neighbor);
                                 visited.add(neighbor);
                                 traversalStepResults.add(new TraversalStepResult(
-                                        new State(neighbor, NodeColor.RED), copyQueue(queue)
+                                        new State(neighbor, 1, NodeColor.RED), copyQueue(queue)
                                 ));
                             }
                         }
@@ -43,7 +43,7 @@ public class BFS extends AbstractGraph {
                 }
                 int removed = queue.poll();
                 traversalStepResults.add(new TraversalStepResult(
-                        new State(removed, NodeColor.GREEN), copyQueue(queue))
+                        new State(removed, 1, NodeColor.GREEN), copyQueue(queue))
                 );
             }
         }

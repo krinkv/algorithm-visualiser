@@ -62,7 +62,7 @@ public class UCS extends AbstractGraph {
                     ucsNode.value = child;
                     addToQueue(ucsNode);
                     this.traversalStepResults.add(new TraversalStepResult(
-                            new State(ucsNode.getValue(), NodeColor.RED),
+                            new State(ucsNode.getValue(), 1, NodeColor.RED),
                             new ArrayDeque<Integer>(priorityQueue.stream().map(n -> n.value).toList())
                     ));
                     parent.set(child, current.node().value());
@@ -70,7 +70,7 @@ public class UCS extends AbstractGraph {
                 }
             }
             this.traversalStepResults.add(new TraversalStepResult(
-                    new State(current.node().value(), NodeColor.GREEN),
+                    new State(current.node().value(), 1, NodeColor.GREEN),
                     new ArrayDeque<Integer>(priorityQueue.stream().map(n -> n.value).toList())
             ));
         }

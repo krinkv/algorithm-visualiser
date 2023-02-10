@@ -44,19 +44,19 @@ public class GraphConfig {
     );
 
     public static final List<NodeDetails> MOUNTAIN_GRAPH_NODE_DETAILS = List.of(
-            new NodeDetails(106.0, 69.0, "Node1"),
-            new NodeDetails(57.0, 136.0, "Node2"),
-            new NodeDetails(192.0, 98.0, "Node3"),
-            new NodeDetails(87.0, 233.0, "Node4"),
-            new NodeDetails(283.0, 107.0, "Node5"),
-            new NodeDetails(343.0, 167.0, "Node6"),
-            new NodeDetails(264.0, 241.0, "Node7"),
-            new NodeDetails(173.0, 315.0, "Node8"),
-            new NodeDetails(325.0, 28.0, "Node9"),
-            new NodeDetails(399.0, 88.0, "Node10"),
-            new NodeDetails(414.0, 222.0, "Node11"),
-            new NodeDetails(452.0, 306.0, "Node12"),
-            new NodeDetails(32.0, 26.0, "Node13")
+            new NodeDetails(106.0, 69.0, "Node1_8"),
+            new NodeDetails(57.0, 136.0, "Node2_7"),
+            new NodeDetails(192.0, 98.0, "Node3_5"),
+            new NodeDetails(87.0, 233.0, "Node4_4"),
+            new NodeDetails(283.0, 107.0, "Node5_6"),
+            new NodeDetails(343.0, 167.0, "Node6_6"),
+            new NodeDetails(264.0, 241.0, "Node7_3"),
+            new NodeDetails(173.0, 315.0, "Node8_0"),
+            new NodeDetails(325.0, 28.0, "Node9_9"),
+            new NodeDetails(399.0, 88.0, "Node10_8"),
+            new NodeDetails(414.0, 222.0, "Node11_7"),
+            new NodeDetails(452.0, 306.0, "Node12_8"),
+            new NodeDetails(32.0, 26.0, "Node13_11")
     );
 
     public static final List<EdgeDetails> MOUNTAIN_GRAPH_EDGE_DETAILS = List.of(

@@ -20,41 +20,36 @@ public class Greedy extends AbstractGraph {
     private void traverse(int start) {
         PriorityQueue<Node> priorityQueue = new PriorityQueue<>();
         Set<Integer> visited = new HashSet<>();
-        for (Node currentNode : graph) {
-            int node = currentNode.node().value();
-            if (node == start) {
-                priorityQueue.add(currentNode);
-                visited.add(node);
-                traversalStepResults.add(new TraversalStepResult(
-                        new State(node, NodeColor.RED),
-                        new LinkedList<>(priorityQueue.stream().map(n -> n.node().value()).toList())
-                ));
-            }
-            while (!priorityQueue.isEmpty()) {
-                Node headNode = priorityQueue.peek();
-                if (headNode.node().value() == goalState){
+
+        Node startNode = getNodeByValue(start);
+
+        priorityQueue.add(startNode);
+        visited.add(startNode.node().value());
+        traversalStepResults.add(new TraversalStepResult(
+                new State(startNode.node().value(), startNode.node().heuristic(), NodeColor.RED),
+                new LinkedList<>(priorityQueue.stream().map(n -> n.node().value()).toList())
+        ));
+
+        while (!priorityQueue.isEmpty()) {
+            Node headNode = priorityQueue.poll();
+
+            List<Integer> neighbors = headNode.neighbourNodes().stream().map(n -> n.dest()).toList();
+            for (int neighbor : neighbors) {
+                if (!visited.contains(neighbor)) {
+                    priorityQueue.add(this.getNodeByValue(neighbor));
+                    visited.add(neighbor);
                     traversalStepResults.add(new TraversalStepResult(
-                            new State(headNode.node().value(), NodeColor.RED),
+                            new State(neighbor, this.getNodeByValue(neighbor).node().heuristic(), NodeColor.RED),
                             new LinkedList<>(priorityQueue.stream().map(n -> n.node().value()).toList())
                     ));
-                    break;
                 }
-                List<Integer> neighbors = headNode.neighbourNodes().stream().map(n -> n.dest()).toList();
-                for (int neighbor : neighbors) {
-                    if (!visited.contains(neighbor)) {
-                        priorityQueue.add(this.getNodeByValue(neighbor));
-                        visited.add(neighbor);
-                        traversalStepResults.add(new TraversalStepResult(
-                                new State(neighbor, NodeColor.RED),
-                                new LinkedList<>(priorityQueue.stream().map(n -> n.node().value()).toList())
-                        ));
-                    }
-                }
-                Node removed = priorityQueue.poll();
-                traversalStepResults.add(new TraversalStepResult(
-                        new State(removed.node().value(), NodeColor.RED),
-                        new LinkedList<>(priorityQueue.stream().map(n -> n.node().value()).toList())
-                ));
+            }
+            traversalStepResults.add(new TraversalStepResult(
+                    new State(headNode.node().value(), headNode.node().heuristic(), NodeColor.GREEN),
+                    new LinkedList<>(priorityQueue.stream().map(n -> n.node().value()).toList())
+            ));
+            if(headNode.node().value() == goalState){
+                break;
             }
         }
 
