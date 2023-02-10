@@ -52,6 +52,9 @@ public class MainScreenController {
     public RadioButton ucsRbtn;
 
     @FXML
+    public RadioButton greedyRbtn;
+
+    @FXML
     public AnchorPane dataStructurePane;
 
     private Traversal traversal;
@@ -99,6 +102,8 @@ public class MainScreenController {
             graphPane.getChildren().addAll(GraphDrawer.drawUninformedSearchGraph());
         } else if (ucsRbtn.isSelected()) {
             // TODO: draw weight graph
+        } else if (greedyRbtn.isSelected()) {
+            graphPane.getChildren().addAll(GraphDrawer.drawMountainSearchGraph());
         }
         // TODO: more checks for heuristic algorithms
     }

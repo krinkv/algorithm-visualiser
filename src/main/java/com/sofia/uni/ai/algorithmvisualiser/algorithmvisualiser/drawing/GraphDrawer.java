@@ -36,6 +36,28 @@ public class GraphDrawer {
 
     }
 
+    public static List<Node> drawMountainSearchGraph() {
+        List<Node> nodes = GraphConfig.MOUNTAIN_GRAPH_NODE_DETAILS
+                .stream()
+                .map(GraphDrawer::createNode)
+                .toList();
+
+        List<Node> edges = GraphConfig.MOUNTAIN_GRAPH_EDGE_DETAILS
+                .stream()
+                .map(GraphDrawer::createEdge)
+                .toList();
+
+        List<Node> labels = GraphConfig.MOUNTAIN_GRAPH_TEXT_LABELS
+                .stream()
+                .map(GraphDrawer::createNodeLabel)
+                .toList();
+
+        return Stream.of(nodes, edges, labels)
+                .flatMap(Collection::stream)
+                .toList();
+
+    }
+
     private static Node createNode(NodeDetails details) {
         Circle circle = new Circle();
         circle.setRadius(24d);
