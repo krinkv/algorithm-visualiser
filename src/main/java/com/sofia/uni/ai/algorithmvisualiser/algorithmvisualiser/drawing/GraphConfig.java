@@ -104,4 +104,43 @@ public class GraphConfig {
             new TextLayoutDetails(407d, 230d, "6", 17.414215087890625d, 28),
             new TextLayoutDetails(442d, 314d, "7", 17.414215087890625d, 28)
     );
+
+    public static final List<NodeDetails> UCS_GRAPH_NODE_DETAILS = List.of(
+            new NodeDetails(81.0, 265.0, "Node1"),
+            new NodeDetails(240.0, 306.0, "Node2"),
+            new NodeDetails(176.0, 177.0, "Node3"),
+            new NodeDetails(105.0, 81.0, "Node4"),
+            new NodeDetails(367.0, 139.0, "Node5"),
+            new NodeDetails(296.0, 47.0, "Node6")
+    );
+
+    public static final List<EdgeDetails> UCS_GRAPH_EDGE_DETAILS = List.of(
+            new EdgeDetails(55d, 69, 161d, 237d, -56d, 38d, "Edge1_2_7"),
+            new EdgeDetails(6d, -35d, 151d, 227d, -53d, 22d, "Edge1_3_9"),
+            new EdgeDetails(185d, -109d, -89d, 211d, 171d, 30d, "Edge1_4_14"),
+            new EdgeDetails(255d, -20d, -71d, 220d, 310d, 63d, "Edge2_3_10"),
+            new EdgeDetails(440d, -58d, -91d, 216d, 337d, 66d, "Edge2_5_15"),
+            new EdgeDetails(199d, -122d, -83d, 222d, 239d, -62d, "Edge3_4_2"),
+            new EdgeDetails(422d, -73d, -77d, 218d, 279d, -39d, "Edge3_5_11"),
+            new EdgeDetails(351d, -167d, -81d, 219d, 210d, -144d, "Edge4_6_9"),
+            new EdgeDetails(390d, -156d, -79d, 224d, 432d, -100, "Edge5_6_6")
+    );
+
+    public static final List<TextLayoutDetails> UCS_GRAPH_TXT_LAYOUT_DETAILS = List.of(
+            new TextLayoutDetails(143d, 310d, "7", 0d, 16),
+            new TextLayoutDetails(212d, 234d, "10", 0d, 16),
+            new TextLayoutDetails(312d, 246d, "15", 0d, 16),
+            new TextLayoutDetails(112d, 215d, "9", 0d, 16),
+            new TextLayoutDetails(144d, 127d, "2", 0d, 16),
+            new TextLayoutDetails(57d, 177d, "14", 0d, 16),
+            new TextLayoutDetails(192d, 51d, "9", 0d, 16),
+            new TextLayoutDetails(264d, 157d, "11", 0d, 16),
+            new TextLayoutDetails(335d, 85d, "6", 0d, 16),
+            new TextLayoutDetails(72d, 274d, "A", 0d, 28),
+            new TextLayoutDetails(231d, 316d, "B", 0d, 28),
+            new TextLayoutDetails(167d, 186d, "C", 0d, 28),
+            new TextLayoutDetails(96d, 90d, "D", 0d, 28),
+            new TextLayoutDetails(356d, 148d, "E", 0d, 28),
+            new TextLayoutDetails(287d, 55d, "F", 0d, 28)
+    );
 }
