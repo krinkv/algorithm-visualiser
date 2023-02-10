@@ -120,9 +120,9 @@ public class MainScreenController {
     private void updateDataStructure(Queue<Integer> dataStructure) {
         dataStructurePane.getChildren().clear();
         int currentY = 560;
-        int diff = 60;
+        int diff = 70;
 
-        for (int i = 0; i < dataStructure.size(); i++) {
+        while (!dataStructure.isEmpty()) {
             int element = dataStructure.poll();
             Circle circle = createDataStructureUiElement();
             Text text = new Text(NodeLabel.getNodeLabel(element).get().toString());
@@ -147,7 +147,7 @@ public class MainScreenController {
     private Circle createDataStructureUiElement() {
         Circle circle = new Circle();
         circle.setRadius(24);
-        circle.setFill(Color.DODGERBLUE);
+        circle.setFill(Color.RED);
 
         return circle;
     }
