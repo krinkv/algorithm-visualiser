@@ -111,7 +111,6 @@ public class MainScreenController {
 
     @FXML
     public void nextStateAction() {
-        System.out.println("kure kapan");
         TraversalStepResult currentState = traversal.getNextState(step);
 
         Shape node = null;
