@@ -89,6 +89,8 @@ public class MainScreenController {
             return Algorithm.DFS;
         } else if (ucsRbtn.isSelected()) {
             return Algorithm.UCS;
+        } else if (greedyRbtn.isSelected()) {
+            return Algorithm.GREEDY;
         }
 
         return null;

@@ -44,19 +44,19 @@ public class GraphConfig {
     );
 
     public static final List<NodeDetails> MOUNTAIN_GRAPH_NODE_DETAILS = List.of(
-            new NodeDetails(32.0, 26.0, "Node13"),
             new NodeDetails(106.0, 69.0, "Node1"),
             new NodeDetails(57.0, 136.0, "Node2"),
-            new NodeDetails(87.0, 233.0, "Node4"),
-            new NodeDetails(173.0, 315.0, "Node8"),
-            new NodeDetails(264.0, 241.0, "Node7"),
-            new NodeDetails(343.0, 167.0, "Node6"),
-            new NodeDetails(283.0, 107.0, "Node5"),
             new NodeDetails(192.0, 98.0, "Node3"),
+            new NodeDetails(87.0, 233.0, "Node4"),
+            new NodeDetails(283.0, 107.0, "Node5"),
+            new NodeDetails(343.0, 167.0, "Node6"),
+            new NodeDetails(264.0, 241.0, "Node7"),
+            new NodeDetails(173.0, 315.0, "Node8"),
             new NodeDetails(325.0, 28.0, "Node9"),
             new NodeDetails(399.0, 88.0, "Node10"),
             new NodeDetails(414.0, 222.0, "Node11"),
-            new NodeDetails(452.0, 306.0, "Node12")
+            new NodeDetails(452.0, 306.0, "Node12"),
+            new NodeDetails(32.0, 26.0, "Node13")
     );
 
     public static final List<EdgeDetails> MOUNTAIN_GRAPH_EDGE_DETAILS = List.of(
@@ -90,18 +90,18 @@ public class GraphConfig {
             new TextLayoutDetails(329d, 98d, "3", 17.414215087890625d, 16),
             new TextLayoutDetails(315d, 133d, "2", 17.414215087890625d, 16),
 
-            new TextLayoutDetails(25d, 35d, "Z", 17.414215087890625d, 28),
-            new TextLayoutDetails(100d, 75d, "S", 17.414215087890625d, 28),
-            new TextLayoutDetails(48d, 145d, "A", 17.414215087890625d, 28),
-            new TextLayoutDetails(81d, 243d, "C", 17.414215087890625d, 28),
-            new TextLayoutDetails(165d, 321d, "G", 17.414215087890625d, 28),
-            new TextLayoutDetails(183d, 107d, "F", 17.414215087890625d, 28),
-            new TextLayoutDetails(274d, 118d, "1", 17.414215087890625d, 28),
-            new TextLayoutDetails(254d, 250d, "2", 17.414215087890625d, 28),
-            new TextLayoutDetails(334d, 177d, "3", 17.414215087890625d, 28),
-            new TextLayoutDetails(317d, 37d, "4", 17.414215087890625d, 28),
-            new TextLayoutDetails(390d, 96d, "5", 17.414215087890625d, 28),
-            new TextLayoutDetails(407d, 230d, "6", 17.414215087890625d, 28),
-            new TextLayoutDetails(442d, 314d, "7", 17.414215087890625d, 28)
+            new TextLayoutDetails(100d, 75d, "A", 17.414215087890625d, 28),
+            new TextLayoutDetails(48d, 145d, "B", 17.414215087890625d, 28),
+            new TextLayoutDetails(183d, 107d, "C", 17.414215087890625d, 28),
+            new TextLayoutDetails(81d, 243d, "D", 17.414215087890625d, 28),
+            new TextLayoutDetails(274d, 118d, "E", 17.414215087890625d, 28),
+            new TextLayoutDetails(334d, 177d, "F", 17.414215087890625d, 28),
+            new TextLayoutDetails(254d, 250d, "G", 17.414215087890625d, 28),
+            new TextLayoutDetails(165d, 321d, "H", 17.414215087890625d, 28),
+            new TextLayoutDetails(317d, 37d, "I", 17.414215087890625d, 28),
+            new TextLayoutDetails(390d, 96d, "J", 17.414215087890625d, 28),
+            new TextLayoutDetails(407d, 230d, "K", 17.414215087890625d, 28),
+            new TextLayoutDetails(442d, 314d, "L", 17.414215087890625d, 28),
+            new TextLayoutDetails(25d, 35d, "M", 17.414215087890625d, 28)
     );
 }

@@ -15,7 +15,8 @@ public enum NodeLabel {
     I(9),
     J(10),
     K(11),
-    L(12);
+    L(12),
+    M(13);
 
     private final int index;
 

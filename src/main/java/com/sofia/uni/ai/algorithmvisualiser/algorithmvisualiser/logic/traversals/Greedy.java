@@ -14,6 +14,7 @@ public class Greedy extends AbstractGraph {
         this.traversalStepResults = new LinkedList<>();
         this.goalState = goalState;
         this.traverse(1);
+        System.out.println("");
     }
 
     private void traverse(int start) {
