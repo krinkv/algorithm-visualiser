@@ -16,28 +16,28 @@ public class DFS extends AbstractGraph {
     public void traverse(int start) {
         Stack<Integer> stack = new Stack<>();
         Set<Integer> visited = new HashSet<>();
-        traverseRec(start,stack, visited);
+        traverseRec(start, stack, visited);
     }
 
     public void traverseRec(int start, Stack<Integer> stack, Set<Integer> visited) {
         stack.push(start);
         visited.add(start);
         this.traversalStepResults.add(new TraversalStepResult(
-                new State(start, NodeColor.RED), new ArrayDeque<>(stack)
+                new State(start, 1, NodeColor.RED), new ArrayDeque<>(stack)
         ));
         for (Node currentNode : graph) {
             if (currentNode.node().value() == start) {
                 List<Integer> neighbors = currentNode.neighbourNodes().stream().map(Edge::dest).toList();
                 for (int neighbor : neighbors) {
                     if (!visited.contains(neighbor)) {
-                        traverseRec(neighbor,stack,visited);
+                        traverseRec(neighbor, stack, visited);
                     }
                 }
             }
         }
         int curr = stack.pop();
         this.traversalStepResults.add(new TraversalStepResult(
-                new State(curr, NodeColor.GREEN), new ArrayDeque<>(stack)
+                new State(curr, 1, NodeColor.GREEN), new ArrayDeque<>(stack)
         ));
     }
 

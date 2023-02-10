@@ -4,10 +4,17 @@ import java.util.Objects;
 
 public class State {
     int value;
+
+    int heuristic;
     NodeColor nodeColor;
 
-    public State(int value, NodeColor nodeColor) {
+    public int getHeuristic() {
+        return heuristic;
+    }
+
+    public State(int value, int heuristic, NodeColor nodeColor) {
         this.value = value;
+        this.heuristic = heuristic;
         this.nodeColor = nodeColor;
     }
 
