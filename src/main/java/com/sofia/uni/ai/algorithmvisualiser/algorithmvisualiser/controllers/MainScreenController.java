@@ -19,6 +19,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextBoundsType;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -70,8 +71,9 @@ public class MainScreenController {
                         .stream()
                         .map(Node::getId)
                         .map(this::getSourceDestinationEdge)
+                        .flatMap(List::stream)
                         .collect(Collectors.toList()),
-                Algorithm.DFS   // Hard coded for now
+                Algorithm.BFS   // Hard coded for now
         );
     }
 
@@ -141,16 +143,15 @@ public class MainScreenController {
         return Integer.valueOf(nodeId.substring(NODE_PREFIX.length()));
     }
 
-    private Edge getSourceDestinationEdge(String edgeId) {
+    private List<Edge> getSourceDestinationEdge(String edgeId) {
         List<Integer> sourceDestWeight = Arrays
                 .stream(edgeId.substring(EDGE_PREFIX.length()).split("_"))
                 .map(Integer::valueOf)
                 .toList();
 
-        return new Edge(
-                sourceDestWeight.get(0),
-                sourceDestWeight.get(1),
-                sourceDestWeight.size() == 2 ? 1 : sourceDestWeight.get(2)
-        );
+        return new ArrayList<Edge>(List.of(
+                new Edge(sourceDestWeight.get(0), sourceDestWeight.get(1), sourceDestWeight.size() == 2 ? 1 : sourceDestWeight.get(2)),
+                new Edge(sourceDestWeight.get(1), sourceDestWeight.get(0), sourceDestWeight.size() == 2 ? 1 : sourceDestWeight.get(2))
+        ));
     }
 }
