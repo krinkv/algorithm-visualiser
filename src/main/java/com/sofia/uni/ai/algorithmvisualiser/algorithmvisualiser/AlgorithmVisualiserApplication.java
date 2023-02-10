@@ -12,7 +12,7 @@ public class AlgorithmVisualiserApplication extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(AlgorithmVisualiserApplication.class.getResource("main-screen.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 900, 740);
-        stage.setTitle("Algorithm Visualiser");
+        stage.setTitle("Визуализатор на алгоритми");
         scene.getRoot().setStyle("-fx-font-family: 'serif'");
         stage.setScene(scene);
         stage.show();

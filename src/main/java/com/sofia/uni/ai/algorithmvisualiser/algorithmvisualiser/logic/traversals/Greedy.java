@@ -40,6 +40,14 @@ public class Greedy extends AbstractGraph {
 
         while (!priorityQueue.isEmpty()) {
             Node headNode = priorityQueue.poll();
+            traversalStepResults.add(new TraversalStepResult(
+                    new State(headNode.node().value(), headNode.node().heuristic(), NodeColor.GREEN),
+                    new LinkedList<>(priorityQueue.stream().map(n -> n.node().value()).toList())
+            ));
+
+            if (headNode.node().value() == goalState) {
+                break;
+            }
 
             List<Integer> neighbors = headNode.neighbourNodes().stream().map(n -> n.dest()).toList();
             for (int neighbor : neighbors) {
@@ -52,13 +60,6 @@ public class Greedy extends AbstractGraph {
                     ));
                     parent.set(neighbor, headNode.node().value());
                 }
-            }
-            traversalStepResults.add(new TraversalStepResult(
-                    new State(headNode.node().value(), headNode.node().heuristic(), NodeColor.GREEN),
-                    new LinkedList<>(priorityQueue.stream().map(n -> n.node().value()).toList())
-            ));
-            if (headNode.node().value() == goalState) {
-                break;
             }
         }
 
