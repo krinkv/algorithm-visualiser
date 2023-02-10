@@ -3,18 +3,26 @@ package com.sofia.uni.ai.algorithmvisualiser.algorithmvisualiser.logic.traversal
 import com.sofia.uni.ai.algorithmvisualiser.algorithmvisualiser.logic.*;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Greedy extends AbstractGraph {
     private final List<TraversalStepResult> traversalStepResults;
 
     private final int goalState;
 
+    private final List<Integer> parent;
+
     public Greedy(List<NodeDetails> nodes, List<Edge> edges, int goalState) {
         super(nodes, edges);
         this.traversalStepResults = new LinkedList<>();
+        this.parent = initCost(nodes);
+        this.parent.add(Integer.MAX_VALUE);
         this.goalState = goalState;
         this.traverse(1);
-        System.out.println("");
+    }
+
+    private List<Integer> initCost(List<NodeDetails> nodes) {
+        return nodes.stream().map(s -> Integer.MAX_VALUE).collect(Collectors.toList());
     }
 
     private void traverse(int start) {
@@ -42,17 +50,26 @@ public class Greedy extends AbstractGraph {
                             new State(neighbor, this.getNodeByValue(neighbor).node().heuristic(), NodeColor.RED),
                             new LinkedList<>(priorityQueue.stream().map(n -> n.node().value()).toList())
                     ));
+                    parent.set(neighbor, headNode.node().value());
                 }
             }
             traversalStepResults.add(new TraversalStepResult(
                     new State(headNode.node().value(), headNode.node().heuristic(), NodeColor.GREEN),
                     new LinkedList<>(priorityQueue.stream().map(n -> n.node().value()).toList())
             ));
-            if(headNode.node().value() == goalState){
+            if (headNode.node().value() == goalState) {
                 break;
             }
         }
 
+        Integer nd = 8;
+        Deque<Integer> path = new ArrayDeque<>();
+        while (nd != Integer.MAX_VALUE) {
+            path.addFirst(nd);
+            nd = parent.get(nd);
+        }
+
+        System.out.println(path);
     }
 
 
