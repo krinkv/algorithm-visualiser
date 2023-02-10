@@ -57,6 +57,7 @@ public class MainScreenController {
 
     @FXML
     public void initGraphAction() {
+        step = 0;
         traversal = GraphTraversalFactory.constructGraph(
                 graphPane.getChildren()
                         .filtered(n -> n.getId() != null)
@@ -73,8 +74,20 @@ public class MainScreenController {
                         .map(this::getSourceDestinationEdge)
                         .flatMap(List::stream)
                         .collect(Collectors.toList()),
-                Algorithm.BFS   // Hard coded for now
+                getAlgorithm()
         );
+    }
+
+    private Algorithm getAlgorithm() {
+        if (bfsRbtn.isSelected()) {
+            return Algorithm.BFS;
+        } else if (dfsRbtn.isSelected()) {
+            return Algorithm.DFS;
+        } else if (ucsRbtn.isSelected()) {
+            return Algorithm.UCS;
+        }
+
+        return null;
     }
 
     @FXML
