@@ -34,6 +34,9 @@ public class MainScreenController {
     private int step = 0;
 
     @FXML
+    public AnchorPane mainPane;
+
+    @FXML
     public AnchorPane graphPane;
 
     @FXML
@@ -99,6 +102,11 @@ public class MainScreenController {
     @FXML
     public void selectAlgorithm() {
         graphPane.getChildren().clear();
+        mainPane.getChildren()
+                .filtered(e -> e.getId() != null && e.getId().equals("heuristic-data"))
+                        .stream()
+                        .findFirst()
+                        .ifPresent(s -> mainPane.getChildren().remove(s));
 
         if (bfsRbtn.isSelected() || dfsRbtn.isSelected()) {
             graphPane.getChildren().addAll(GraphDrawer.drawUninformedSearchGraph());
@@ -106,6 +114,7 @@ public class MainScreenController {
             graphPane.getChildren().addAll(GraphDrawer.drawUCSsearchGraph());
         } else if (greedyRbtn.isSelected()) {
             graphPane.getChildren().addAll(GraphDrawer.drawMountainSearchGraph());
+            mainPane.getChildren().add(GraphDrawer.drawHeuristicDetails());
         }
     }
 

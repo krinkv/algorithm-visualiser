@@ -81,6 +81,17 @@ public class GraphDrawer {
 
     }
 
+    public static Node drawHeuristicDetails() {
+        Text text = new Text();
+        text.setLayoutX(288d);
+        text.setLayoutY(446d);
+        text.setText("h(A) = 8   h(B) = 7   h(C) = 5   h(D) = 4   h(E) = 6   h(F) = 6    h(G) = 3   h(H) = 0   h(I) = 9   h(J) = 9   h(K) = 7   h(L) = 8   h(M) = 11");
+        text.setWrappingWidth(267.7294921875d);
+        text.setFont(new Font(16d));
+        text.setId("heuristic-data");
+        return text;
+    }
+
     private static Node createNode(NodeDetails details) {
         Circle circle = new Circle();
         circle.setRadius(24d);
