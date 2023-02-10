@@ -36,6 +36,27 @@ public class GraphDrawer {
 
     }
 
+    public static List<Node> drawUCSsearchGraph() {
+        List<Node> nodes = GraphConfig.UCS_GRAPH_NODE_DETAILS
+                .stream()
+                .map(GraphDrawer::createNode)
+                .toList();
+
+        List<Node> edges = GraphConfig.UCS_GRAPH_EDGE_DETAILS
+                .stream()
+                .map(GraphDrawer::createEdge)
+                .toList();
+
+        List<Node> labels = GraphConfig.UCS_GRAPH_TXT_LAYOUT_DETAILS
+                .stream()
+                .map(GraphDrawer::createNodeLabel)
+                .toList();
+
+        return Stream.of(nodes, edges, labels)
+                .flatMap(Collection::stream)
+                .toList();
+    }
+
     private static Node createNode(NodeDetails details) {
         Circle circle = new Circle();
         circle.setRadius(24d);
